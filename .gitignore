@@ -1,0 +1,28 @@
+# === Idora — archivos que NUNCA deben subirse ===
+
+# Configuración con credenciales / datos de la auditoría
+idora.yaml
+
+# Variables de entorno locales (secretos)
+.env
+.env.*
+
+# Capturas de tráfico: contienen cookies y tokens de sesión
+*.har
+
+# Evidencia e informes generados
+idora_out/
+*.sarif
+
+# Listas de endpoints descubiertas (datos del objetivo)
+endpoints.txt
+encontrados.txt
+
+# === Artefactos de Python / empaquetado ===
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+.venv/
+venv/

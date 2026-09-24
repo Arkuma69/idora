@@ -1,0 +1,54 @@
+# ---------------------------------------------------------------------------
+# Empaquetado de Idora — permite instalarla como comando global `idora`.
+#
+#   pipx install .                       (desde esta carpeta)
+#   pipx install git+https://github.com/Arkuma69/idora.git
+#
+# Tras instalar, se usa simplemente:  idora --help
+# ---------------------------------------------------------------------------
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idora"
+description = "Escáner de IDOR / BOLA para auditorías web autorizadas"
+readme = "README.md"
+requires-python = ">=3.8"
+dynamic = ["version"]                 # la versión se lee de idora.__version__
+authors = [{ name = "Arkuma69" }]
+keywords = ["idor", "bola", "seguridad", "auditoria", "pentest", "appsec"]
+license = { text = "Apache-2.0" }     # ver archivos LICENSE y NOTICE
+dependencies = [
+    "requests>=2.25",
+    "PyYAML>=5.4",
+]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Security",
+]
+
+[project.optional-dependencies]
+# Colores en la consola de Windows (opcional):  pipx install ".[color]"
+color = ["colorama>=0.4"]
+
+[project.urls]
+Homepage = "https://github.com/Arkuma69/idora"
+Issues = "https://github.com/Arkuma69/idora/issues"
+
+# Comando global: al instalar, `idora` ejecuta la función main() del módulo.
+[project.scripts]
+idora = "idora:main"
+
+# Idora es un módulo de un solo archivo (idora.py), no un paquete con carpetas.
+[tool.setuptools]
+py-modules = ["idora"]
+
+# Única fuente de verdad de la versión: la constante __version__ en idora.py.
+[tool.setuptools.dynamic]
+version = { attr = "idora.__version__" }
