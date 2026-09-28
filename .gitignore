@@ -26,3 +26,4 @@ dist/
 *.egg-info/
 .venv/
 venv/
+.DS_Store
